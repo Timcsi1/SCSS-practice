@@ -1,0 +1,108 @@
+.hamburgerMenu {
+  height: 100px;
+  background-color: black;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    width: 120px;
+    height: 20px;
+    background-color: black;
+    display: flex;
+    position: relative;
+    pointer-events: none;
+    border-radius: 10px;
+    transition: all 0, 5s ease;
+  }
+
+  &::before &::after {
+    width: 120px;
+    height: 20px;
+    background-color: inherit;
+    content: "";
+    position: absolute;
+    border-radius: 10px;
+    transition: all 0, 5s ease;
+  }
+
+  &::before {
+    top: -40px;
+  }
+  &::after {
+    bottom: -40px;
+  }
+}
+&.clicked {
+  span {
+    height: 0;
+    &::before {
+      transform: rotate(45deg);
+      top: -10px;
+    }
+    &::after {
+      transform: rotate(-45deg);
+      bottom: -10px;
+    }
+  }
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 50px;
+  padding-right: 50px;
+  background-color: #ef78b3;
+
+  &::after {
+    width: 50%;
+    height: 100%;
+    z-index: 2;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-bottom: 1px solid white;
+    transform: translateX(-50%);
+    animation: border-grow 2s ease;
+  }
+
+  @keyframes border-grow {
+    0% {
+      width: 1%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  button {
+    appearance: none !important;
+    background-color: unset;
+    border: unset;
+    color: inherit;
+    font-size: 32px;
+
+    &:last-child {
+      margin-right: 50px;
+    }
+  }
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  * {
+    margin: 0;
+  }
+}
